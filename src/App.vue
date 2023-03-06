@@ -8,7 +8,7 @@ export default {
     return {
       title: "BOOLFLIX",
       series: [],
-      endpoint: "https://api.themoviedb.org/3/search/tv?api_key=c1610722c2c90e0f63ab759963e2c84c&query=movies",
+      endpoint: "https://api.themoviedb.org/3/search/tv?api_key=c1610722c2c90e0f63ab759963e2c84c",
       pic: "http://image.tmdb.org/t/p/w300",
     };
   },
@@ -16,7 +16,7 @@ export default {
   components: { AppHeader, AppMain },
 
   created() {
-    axios.get(this.endpoint)
+    axios.get(this.endpoint + "&query=movies")
       .then((response) => {
         console.log(response);
         this.series = response.data.results;
@@ -27,7 +27,10 @@ export default {
   methods: {
     fetchFilter(term) {
       console.log(term);
-      this.fetchFilter(`${this.endpoint}?name=${term}`);
+      axios.get(this.endpoint + "&query=" + term)
+        .then((response) => {
+          this.series = response.data.results;
+        });
     },
   },
 };

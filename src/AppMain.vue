@@ -1,5 +1,5 @@
 <script>
-//import AppHeader from './AppHeader.vue';
+//import
 export default {
     data() {
         return {
@@ -7,19 +7,20 @@ export default {
     },
 
     //components: {  },
+    props: { TVseries: Array },
 };
 </script>
 
 <template>
     <div class="container">
-        <input v-model="search" placeholder="cerca il tuo film">
+        <!--  -->
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4">
-            <div class="col" v-for="serie in series">
+            <div class="col" v-for="serie in TVseries">
                 <img src="" alt="">
-                <h4>{{ serie.name }}</h4>
-                <p class="">originale name: {{ serie.original_name }}</p>
-                <p>language: ({{ serie.original_language }})</p>
-                <p>vote: {{ serie.vote_average }}</p>
+                <h4 class="text-light">{{ serie.name }}</h4>
+                <p class="text-light">originale title: {{ serie.original_name }}</p>
+                <p class="text-light">language: ({{ serie.original_language }})</p>
+                <p class="text-light">vote: {{ serie.vote_average }}</p>
             </div>
         </div>
     </div>

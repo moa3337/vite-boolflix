@@ -18,6 +18,7 @@ export default {
     methods: {
         clear() {
             this.term = "";
+            this.$emit("on-search", this.term);
         },
         search() {
             this.$emit("on-search", this.term);
@@ -35,7 +36,8 @@ export default {
         </h1>
         <form @submit.prevent="">
             <nav class="input-group d-flex">
-                <input type="text" class="form-control" :placeholder="placeholder || 'cerca...'" v-model="term" />
+                <input type="text" class="form-control" :placeholder="placeholder || 'cerca...'" v-model="term"
+                    @keyup.enter="search" />
                 <button class="btn btn-outline-success" type="button" @click="search">Cerca</button>
                 <button class="btn btn-outline-danger" type="button" @click="clear">Reset</button>
             </nav>
