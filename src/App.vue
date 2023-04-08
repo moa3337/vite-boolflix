@@ -63,7 +63,7 @@ export default {
     <AppHeader placeholder="Cerca Titolo" @on-search="fetchFilter" :title="title" />
   </header>
   <!---->
-  <main>
+  <main class="pt-4">
     <AppMain :TVmovies="movies" :TVseries="series" :pic="pic" />
   </main>
 </template>
